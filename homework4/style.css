@@ -1,0 +1,257 @@
+/* Homework 3 - CSS Styling */
+
+/* Step 1: Page Layout using Grid */
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #eeeeee;
+    color: #222222;
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "nav main"
+        "footer footer";
+    grid-template-columns: 210px 1fr;
+    grid-template-rows: 120px 1fr auto;
+    min-height: 100vh;
+}
+
+header {
+    grid-area: header;
+    background: #222222;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+header h1 {
+    margin: 0 0 8px;
+}
+
+header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+/* Step 2: Sidebar using Flexbox */
+.sidebar {
+    grid-area: nav;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    padding: 25px 15px;
+    background: #333333;
+}
+
+.sidebar a {
+    width: 100%;
+    padding: 12px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.sidebar a:hover {
+    background: #555555;
+}
+
+/* Step 7: Resume button using absolute positioning */
+.resume-button {
+    position: absolute;
+    bottom: 20px;
+    left: 15px;
+    width: calc(100% - 30px) !important;
+    background: #666666;
+    padding: 12px !important;
+    border-radius: 10px;
+}
+
+.resume-button:hover {
+    background: #888888 !important;
+    transform: scale(1.03);
+}
+
+/* Main content */
+main {
+    grid-area: main;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+/* Step 3: Summary, Education, and Experience */
+.summary,
+.education,
+.experience,
+.skills-section,
+.projects-section {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+}
+
+.summary h2,
+.education h2,
+.experience h2,
+.skills-section h2,
+.projects-section h2 {
+    margin-top: 0;
+    font-size: 28px;
+}
+
+.summary p {
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Education and Experience tables */
+.education table,
+.experience table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.education th,
+.education td,
+.experience th,
+.experience td {
+    border: 1px solid #bbbbbb;
+    padding: 12px;
+    text-align: left;
+}
+
+/* Step 4: Skills using Flexbox */
+.skills {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.skill {
+    padding: 14px 18px;
+    background: #e1e1e1;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+/* Step 5: Projects using Grid */
+.projects {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.project {
+    padding: 20px;
+    background: #fafafa;
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+
+    /* Bonus: Box Shadow */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.project h3 {
+    margin-top: 0;
+    font-size: 21px;
+}
+
+.project p {
+    line-height: 1.5;
+}
+
+.project img {
+    display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    margin: 15px 0 8px;
+    border-radius: 8px;
+}
+
+/* Step 6: Contact information and positioning */
+footer {
+    grid-area: footer;
+    position: relative;
+    min-height: 190px;
+    padding: 25px;
+    background: #222222;
+    color: white;
+}
+
+.contact {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.contact h2 {
+    margin-top: 0;
+}
+
+.contact p {
+    margin: 7px 0;
+}
+
+.contact a {
+    color: white;
+}
+
+.copyright {
+    position: absolute;
+    right: 25px;
+    bottom: 20px;
+}
+
+/* Responsive layout */
+@media (max-width: 900px) {
+    .projects {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 650px) {
+    body {
+        grid-template-areas:
+            "header"
+            "nav"
+            "main"
+            "footer";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr auto;
+    }
+
+    .sidebar {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .sidebar a {
+        width: auto;
+    }
+
+    .resume-button {
+        position: static;
+        width: auto !important;
+    }
+
+    .copyright {
+        position: static;
+        margin-top: 20px;
+    }
+}
